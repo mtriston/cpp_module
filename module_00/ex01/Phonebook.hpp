@@ -1,16 +1,15 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 # include "Contact.hpp"
-# include <iostream>
-# include <string>
+# include <iomanip>
 
 class Phonebook {
 	public:
 		Phonebook() { _counter = 0; }
-		int		get_counter(void);
-		void	add(void);
-		void	display(void);
-		void	search(int i);
+		void			add();
+		bool 			print_table();
+		void			print_contact(int i);
+		std::string		truncate(std::string str);
 		
 	private:
 		int		_counter;

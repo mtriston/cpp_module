@@ -6,7 +6,7 @@ OBJ = $(SRC:.cpp=.o)
 
 CC = clang++
 
-CC_FLAGS = 
+CC_FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
