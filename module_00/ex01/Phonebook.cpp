@@ -8,7 +8,7 @@ void	Phonebook::add(void) {
 	if (_counter == 8)
 		std::cout << "Phonebook is full!" << std::endl;
 	else
-	{
+	{	std::cin.ignore(32767, '\n');	
 		std::getline(std::cin, temp);
 		_Phonebook[_counter].set_first_name(temp);
 	}

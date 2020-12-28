@@ -5,13 +5,19 @@ int		main(void)
 	std::string	command;
 	Phonebook Phonebook;
 
-//	std::cin >> command;
-//	if (command == "EXIT")
-//	{
-//		std::cout << "Exit." << std::endl;
-//		return (0);
-//	}
-	Phonebook.add();
-	Phonebook.display();
+	while (1)
+	{
+		std::cout << "Enter a command: ";
+		std::cin >> command;
+		if (command == "EXIT")
+			return (0);
+		else if (command == "ADD")
+		{
+			std::cout << "Add new contact!" << std::endl;
+			Phonebook.add();
+		}
+		else if (command == "SEARCH")
+			Phonebook.display();
+	}
 	return (0);
 }
