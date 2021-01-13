@@ -6,13 +6,12 @@
 class ZombieEvent {
 
 	public:
-		void		setZombieType(std::string type);
-		Zombie		*newZombie(std::string name);
+		void		setZombieType(std::string const &type);
+		Zombie		*newZombie(std::string const &name);
 		Zombie		*randomChump();
 
 	private:
 		std::string	_type;
-		std::string	_pool[5] = {"Bob", "Spike", "Bull", "Michele", "Ann"};
 };
 
 #endif

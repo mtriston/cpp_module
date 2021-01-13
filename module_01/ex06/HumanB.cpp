@@ -1,8 +1,8 @@
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name) : _name(name) {}
+HumanB::HumanB(std::string const &name) : _name(name) {}
 
-void	HumanB::setWeapon(Weapon& weapon)
+void	HumanB::setWeapon(Weapon &weapon)
 {
 	this->_weapon = &weapon;
 }

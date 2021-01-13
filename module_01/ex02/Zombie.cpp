@@ -1,6 +1,6 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie(std::string type, std::string name) : _type(type), _name(name) {}
+Zombie::Zombie(std::string const &type, std::string const &name) : _type(type), _name(name) {}
 
 void	Zombie::announce() {
 

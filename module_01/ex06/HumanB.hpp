@@ -11,8 +11,8 @@ private:
 	Weapon*			_weapon;
 
 public:
-	HumanB(std::string);
-	void	setWeapon(Weapon& weapon);
+	HumanB(std::string const &);
+	void	setWeapon(Weapon &weapon);
 	void	attack();
 };
 

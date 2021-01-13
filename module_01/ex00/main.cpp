@@ -1,18 +1,20 @@
 #include "Pony.hpp"
 
-void	ponyOnTheHeap() {
+static void	ponyOnTheHeap() {
+
 	Pony *pony = new Pony("Pony_on_the_heap");
 	pony->say();
 	delete pony;
 }
 
-void	ponyOnTheStack() {
+static void	ponyOnTheStack() {
+
 	Pony pony("Pony_on_the_stack");
 	pony.say();
 }
 
-int		main()
-{
+int			main() {
+
 	ponyOnTheHeap();
 	ponyOnTheStack();
 	return (0);

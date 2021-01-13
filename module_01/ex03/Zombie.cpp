@@ -15,7 +15,7 @@ void	Zombie::set_random_name()
 	len = rand() % 5 + 4;
 	for (int i = 0; i < len; ++i)
 	{
-		word += abc[rand() % sizeof(abc) - 1];
+		word += abc[std::rand() % sizeof(abc) - 1];
 	}
 	set_name(word);
 }

@@ -5,10 +5,7 @@
 
 class Brain
 {
-private:
-	int	_iq;
 public:
-	Brain(int iq = 100);
 	std::string identify();
 };
 

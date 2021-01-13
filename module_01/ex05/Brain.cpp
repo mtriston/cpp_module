@@ -1,7 +1,5 @@
 #include "Brain.hpp"
 
-Brain::Brain(int iq) : _iq(iq) {}
-
 std::string Brain::identify()
 {
     std::stringstream ss;

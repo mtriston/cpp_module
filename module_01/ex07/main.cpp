@@ -1,17 +1,18 @@
 #include <fstream>
 #include <iostream>
 
-int	error(std::string msg)
-{
+static int	error(std::string msg) {
+
 	std::cout << "Error!" << std::endl;
 	std::cout << msg << std::endl;
 	return (1);
 }
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
+
 	std::ifstream	src;
 	std::ofstream	dst;
+	std::string		dst_name;
 	std::string		buf;
 	std::string		s1;
 	std::string		s2;
@@ -25,18 +26,22 @@ int main(int argc, char const *argv[])
 	src.open(argv[1]);
 	if (!src.is_open())
 		return (error("The src file cannot be opened."));
-	dst.open(std::string (argv[1]) + ".replace");
+	dst_name = std::string (argv[1]) + std::string (".replace");
+	dst.open(dst_name.c_str());
 	if (!dst.is_open())
 		return (error("The dst file cannot be opened."));
-	do
-	{
-		if (buf.size() > 0)
-			dst << ' ';
-		if (buf == s1)
-			dst << s2;
-		else
-			dst << buf;
-	} while (src >> buf);
+	while (getline(src, buf)) {
+		
+		size_t pos;
+		while (true)
+		{
+			pos = buf.find(s1);
+			if (pos == std::string::npos)
+				break;
+			buf.replace(pos, s1.length(), s2);
+		}
+		dst << buf << std::endl;
+	}
 	src.close();
 	dst.close();
 	return 0;
