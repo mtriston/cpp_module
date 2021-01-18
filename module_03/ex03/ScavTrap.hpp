@@ -22,6 +22,8 @@ public:
 	ScavTrap & operator = (ScavTrap const &);
 	~ScavTrap();
 
+	void    rangedAttack(std::string const &target);
+	void    meleeAttack(std::string const &target);
     void    challengeNewcomer(std::string const &target);
 };
 

@@ -71,12 +71,14 @@ ScavTrap::~ScavTrap()
 
 void    ScavTrap::rangedAttack(std::string const &target)
 {
+	std::cout << "ScavTrap attacks: ";
     std::cout << "\033[1;31m" << _name << " attacks " << target << " at range, causing ";
     std::cout << _rangedAttackDmg << " points of damage!\033[0m" << std::endl;
 }
 
 void    ScavTrap::meleeAttack(std::string const &target)
 {
+	std::cout << "ScavTrap attacks: ";
     std::cout << "\033[1;31m" << _name << " attacks " << target << " at melee, causing ";
     std::cout << _meleeAttackDmg << " points of damage!\033[0m" << std::endl;
 }

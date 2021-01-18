@@ -52,6 +52,19 @@ NinjaTrap::~NinjaTrap()
     std::cout << "\033[1;33m" << _name << "is dead\nNinjaTrap destructor was called\033[0m" << std::endl;
 }
 
+void    NinjaTrap::rangedAttack(std::string const &target)
+{
+	std::cout << "NinjaTrap attacks: ";
+    std::cout << "\033[1;31m" << _name << " attacks " << target << " at range, causing ";
+    std::cout << _rangedAttackDmg << " points of damage!\033[0m" << std::endl;
+}
+
+void    NinjaTrap::meleeAttack(std::string const &target)
+{
+	std::cout << "NinjaTrap attacks: ";
+    std::cout << "\033[1;31m" << _name << " attacks " << target << " at melee, causing ";
+    std::cout << _meleeAttackDmg << " points of damage!\033[0m" << std::endl;
+}
 void    NinjaTrap::ninjaShoebox(ClapTrap &trap)
 {
     std::cout << "Doing Shoebox... It's ClapTrap!" << std::endl;
