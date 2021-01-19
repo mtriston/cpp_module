@@ -8,5 +8,5 @@ public:
 	PowerFist(PowerFist const &);
 	PowerFist & operator=(PowerFist const &);
 	~PowerFist();
-	void attack();
+	void attack() const;
 };

@@ -1,7 +1,7 @@
 #include "PowerFist.hpp"
 
 PowerFist::PowerFist() : AWeapon("Power Fist", 8, 50) {}
-PowerFist::PowerFist(AWeapon const &a) : AWeapon(a) {}
+PowerFist::PowerFist(PowerFist const &a) : AWeapon(a) {}
 PowerFist & PowerFist::operator=(PowerFist const &a)
 {
 	if (this != &a)
@@ -12,4 +12,4 @@ PowerFist & PowerFist::operator=(PowerFist const &a)
 }
 PowerFist::~PowerFist() {}
 
-void PowerFist::attack() { std::cout << "* pschhh... SBAM! *" << std:endl; }
+void PowerFist::attack() const { std::cout << "* pschhh... SBAM! *" << std::endl; }

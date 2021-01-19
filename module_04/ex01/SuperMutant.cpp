@@ -8,7 +8,7 @@ SuperMutant::SuperMutant(SuperMutant const & a) : Enemy(a)
 {
 	std::cout << "Gaaah. Me want smash heads!" << std::endl;
 }
-SuperMutant & SuperMutant::operator(SuperMutant const & a)
+SuperMutant & SuperMutant::operator=(SuperMutant const & a)
 {
 	if (this != &a)
 	{
@@ -21,11 +21,13 @@ SuperMutant & SuperMutant::operator(SuperMutant const & a)
 SuperMutant::~SuperMutant()
 {
 	std::cout << "Aaargh..." << std::endl;
+	Enemy::~Enemy();
 }
+
 void SuperMutant::takeDamage(int amount)
 {
 	if (amount > 3)
-		_hp -= amount + 3;
-	if (_hp <= 0)
-		SuperMutant::~SuperMutant();	
+		Enemy::takeDamage(amount - 3);
+	if (_hp == 0)
+		this->~SuperMutant();
 }

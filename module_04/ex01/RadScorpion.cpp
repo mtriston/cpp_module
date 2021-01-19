@@ -10,7 +10,7 @@ RadScorpion::RadScorpion(RadScorpion const & a) : Enemy(a)
 	std::cout << "* click click click *" << std::endl;
 }
 
-RadScorpion & RadScorpion::operator(RadScorpion const & a)
+RadScorpion & RadScorpion::operator=(RadScorpion const & a)
 {
 	if (this != &a)
 	{
@@ -23,4 +23,11 @@ RadScorpion & RadScorpion::operator(RadScorpion const & a)
 RadScorpion::~RadScorpion()
 {
 	std::cout << "* SPROTCH *" << std::endl;
+}
+
+void RadScorpion::takeDamage(int amount)
+{
+	Enemy::takeDamage(amount);
+	if (_hp == 0)
+		RadScorpion::~RadScorpion();
 }
