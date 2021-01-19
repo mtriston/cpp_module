@@ -12,11 +12,11 @@ private:
 public:
     Sorcerer
     (
-        std::string const & name = "Robert",
-        std::string const & title = "Magnificent"
+        std::string const & name = "Sorcerer",
+        std::string const & title = "Ordinary"
     );
-    Sorcerer(Sorcerer const & other);
-    Sorcerer & operator=(Sorcerer const & other);
+    Sorcerer(Sorcerer const &);
+    Sorcerer & operator=(Sorcerer const &);
     ~Sorcerer();
     std::string const & getName() const;
     std::string const & getTitle() const;

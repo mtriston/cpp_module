@@ -1,16 +1,36 @@
 #include "Sorcerer.hpp"
-//TODO: copy and =
-Sorcerer::Sorcerer(std::string const & name, std::string const & title)
+
+Sorcerer::Sorcerer(std::string const & name, std::string const & title) : _name(name), _title(title)
 {
-    this->_name = name;
-    this->_title = title;
-    std::cout << this->_name << ", " << this->_title << ", is born!" << std::endl;
+    std::cout << _name << ", " << _title << ", is born!" << std::endl;
+}
+
+Sorcerer::Sorcerer(Sorcerer const & a) : _name(a._name), _title(a._title)
+{
+    std::cout << _name << ", " << _title << ", is born!" << std::endl;
+}
+
+Sorcerer & Sorcerer::operator=(Sorcerer const & a)
+{
+	if (this != &a)
+	{
+    	std::cout << _name << ", " << _title << ", becomes like " << a._name << ", " << a._title << "!" << std::endl;
+		_name = a._name;
+		_title = a._title;
+	}
+	return (*this);
 }
 
 Sorcerer::~Sorcerer()
 {
-    std::cout << this->_name << ", " << this->_title << ", is dead. Consequences will never be the same!" << std::endl;
+    std::cout << _name << ", " << _title << ", is dead. Consequences will never be the same!" << std::endl;
 }
+
+void Sorcerer::polymorph(Victim const & victim) const
+{
+	victim.getPolymorphed();	
+}
+
 std::string const & Sorcerer::getName() const { return (_name); }
 
 std::string const & Sorcerer::getTitle() const { return (_title); }

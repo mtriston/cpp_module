@@ -2,18 +2,18 @@
 # define PEON_HPP
 # include <string>
 # include <iostream>
+# include "Victim.hpp"
 
 class Peon : public Victim
 {
 public:
-    Peon(std::string const & name = "Tramp");
-    Peon(Peon const & other);
-    Peon & operator=(Peon const & other);
+    Peon(std::string const & name = "Peon");
+    Peon(Peon const &);
+    Peon & operator=(Peon const &);
     ~Peon();
-    std::string const & getName() const;
-    void getPolymorphed() const override;
+    void getPolymorphed() const;
 };
 
-std::ostream & operator << (std::ostream &os, const Peon &p)
+std::ostream & operator << (std::ostream &os, const Peon &p);
 
 #endif
