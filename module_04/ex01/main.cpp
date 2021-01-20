@@ -23,26 +23,33 @@ int main()
 	me->attack(b);
 	std::cout << *me;
 
-	SuperMutant s;
+	std::cout << "\n----------Additional tests----------" << std::endl;
+
+	SuperMutant *s = new SuperMutant();
+
 	me->equip(0);
 	std::cout << *me;
-	me->attack(&s);
+	me->attack(s);
+
 	me->equip(pf);
 	me->recoverAP();
 	me->recoverAP();
 	me->recoverAP();
-	std::cout << *me;
-	me->attack(&s);
-	me->attack(&s);
-	me->attack(&s);
-	std::cout << *me;
-	me->recoverAP();
 	me->recoverAP();
 	std::cout << *me;
-	me->attack(&s);
-	me->attack(&s);
-	std::cout << s.getType() << std::endl;
-	me->attack(0);
+	std::cout << "Weapon has " << me->getWeapon().getDamage() << " damage" << std::endl;
+	std::cout << "SuperMutant's hp " << s->getHP() << std::endl;
+	me->attack(s);
+	std::cout << "SuperMutant's hp " << s->getHP() << std::endl;
+	me->attack(s);
+	std::cout << "SuperMutant's hp " << s->getHP() << std::endl;
+	me->attack(s);
+	std::cout << "SuperMutant's hp " << s->getHP() << std::endl;
+	me->attack(s);
+
+	delete me;
+	delete pr;
+	delete pf;
 
 	return 0;
 }

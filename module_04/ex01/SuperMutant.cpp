@@ -28,6 +28,4 @@ void SuperMutant::takeDamage(int amount)
 {
 	if (amount > 3)
 		Enemy::takeDamage(amount - 3);
-	if (_hp == 0)
-		this->~SuperMutant();
 }

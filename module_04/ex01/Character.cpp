@@ -34,8 +34,11 @@ void Character::attack(Enemy* enemy)
 		_weapon->attack();
 		enemy->takeDamage(_weapon->getDamage());
 		_ap -= _weapon->getAPCost();
+		if (enemy->getHP() == 0)
+			delete enemy;
 	}
 }
+
 std::string const & Character::getName() const { return (_name); }
 
 int 				Character::getAP() const { return (_ap); }

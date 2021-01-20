@@ -8,5 +8,4 @@ public:
 	RadScorpion(RadScorpion const &);
 	RadScorpion & operator=(RadScorpion const &);
 	~RadScorpion();
-	void takeDamage(int amount);
 };

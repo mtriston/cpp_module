@@ -25,9 +25,3 @@ RadScorpion::~RadScorpion()
 	std::cout << "* SPROTCH *" << std::endl;
 }
 
-void RadScorpion::takeDamage(int amount)
-{
-	Enemy::takeDamage(amount);
-	if (_hp == 0)
-		RadScorpion::~RadScorpion();
-}
