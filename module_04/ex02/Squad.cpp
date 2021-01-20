@@ -2,11 +2,29 @@
 
 Squad::Squad() : _count(0), _squad(0) {}
 
-Squad::~Squad() {}
+Squad::~Squad()
+{
+	for (int i = 0; i < _count; ++i)
+		delete _squad[i];
+	delete [] _squad;
+}
 
-Squad::Squad(Squad const & a) {}
+Squad::Squad(Squad const & a) : _count(0), _squad(0)
+{
+	for (int i = 0; i < a._count; ++i)
+		this->push(a.getUnit(i)->clone());
+}
 
-Squad & Squad::operator=(Squad const & a) { return (*this); }
+Squad & Squad::operator=(Squad const & a)
+{
+	for (int i = 0; i < _count; ++i)
+		delete _squad[i];
+	delete [] _squad;
+	_count = 0;
+	for (int i = 0; i < a._count; ++i)
+		push(a.getUnit(i)->clone());
+	return (*this);
+}
 
 int				Squad::getCount() const { return (_count); }
 
@@ -35,8 +53,8 @@ int				Squad::push(ISpaceMarine* unit)
 	ISpaceMarine **new_squad = new ISpaceMarine*[_count + 1];	
 	for (int i = 0; i < _count; ++i)
 		new_squad[i] = _squad[i];
-	new_squad[_count] = unit;
 	delete [] _squad;
+	new_squad[_count] = unit;
 	_squad = new_squad;
 	return (++_count);
 }
