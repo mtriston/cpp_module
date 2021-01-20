@@ -17,12 +17,15 @@ Squad::Squad(Squad const & a) : _count(0), _squad(0)
 
 Squad & Squad::operator=(Squad const & a)
 {
-	for (int i = 0; i < _count; ++i)
-		delete _squad[i];
-	delete [] _squad;
-	_count = 0;
-	for (int i = 0; i < a._count; ++i)
-		push(a.getUnit(i)->clone());
+	if (this != &a)
+	{
+		for (int i = 0; i < _count; ++i)
+			delete _squad[i];
+		delete [] _squad;
+		_count = 0;
+		for (int i = 0; i < a._count; ++i)
+			push(a.getUnit(i)->clone());
+	}
 	return (*this);
 }
 

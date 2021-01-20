@@ -48,6 +48,7 @@ int main()
 			cur->rangedAttack();
 			cur->meleeAttack();
 		}
+		temp = temp;
 
 		delete temp;
 		delete squad;
