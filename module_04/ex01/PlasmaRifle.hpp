@@ -7,6 +7,6 @@ public:
 	PlasmaRifle();
 	PlasmaRifle(PlasmaRifle const &);
 	PlasmaRifle & operator= (PlasmaRifle const &);
-	~PlasmaRifle();
+	virtual ~PlasmaRifle();
 	void attack() const;
 };

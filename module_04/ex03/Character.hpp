@@ -2,11 +2,12 @@
 // Created by mtriston on 20.01.2021.
 //
 
-#ifndef CHARACHER_HPP
-#define CHARACHER_HPP
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 #include "ICharacter.hpp"
+#include "AMateria.hpp"
 
-class Characher : public ICharacter
+class Character : public ICharacter
 {
 private:
 	std::string			_name;
@@ -14,11 +15,11 @@ private:
 	int 				_idx;
 	static const int	_limit = 4;
 public:
-	Characher(std::string const & name = "Noname");
-	Characher(Characher const &);
-	Characher &operator=(Characher const &);
-	~Characher();
-	std::string const & getName();
+	Character(std::string const & name = "Noname");
+	Character(Character const &);
+	Character &operator=(Character const &);
+	~Character();
+	std::string const & getName() const;
 	void equip(AMateria* m);
 	void unequip(int idx);
 	void use(int idx, ICharacter& target);

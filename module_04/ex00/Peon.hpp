@@ -10,7 +10,7 @@ public:
     Peon(std::string const & name = "Peon");
     Peon(Peon const &);
     Peon & operator=(Peon const &);
-    ~Peon();
+	virtual ~Peon();
     void getPolymorphed() const;
 };
 

@@ -1,6 +1,7 @@
 #include "Sorcerer.hpp"
 #include "Victim.hpp"
 #include "Peon.hpp"
+#include "Goof.hpp"
 
 int main()
 {
@@ -18,19 +19,22 @@ int main()
 
 	std::cout << "\n\n___Additional tests___\n\n" << std::endl;
 	{
-		Victim v;
-		v = Victim(v);
-		v.getName();
-		v.getPolymorphed();
+		Goof const g;
+		//g = Goof(g);
+		std::cout << g;
+		g.getName();
+		g.getPolymorphed();
 
-		Peon p;
-		p = Peon(p);
+		Peon const p;
+		//p = Peon(p);
+		std::cout << p;
 		p.getName();
 		p.getPolymorphed();
 		
-		Sorcerer s;
-		s = Sorcerer(s);
-		s.polymorph(v);
+		Sorcerer const s;
+		//s = Sorcerer(s);
+		std::cout << s;
+		s.polymorph(g);
 		s.polymorph(p);
 	}
 	return 0;

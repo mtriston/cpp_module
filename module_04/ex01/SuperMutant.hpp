@@ -7,6 +7,6 @@ public:
 	SuperMutant();
 	SuperMutant(SuperMutant const &);
 	SuperMutant & operator=(SuperMutant const &);
-	~SuperMutant();
+	virtual ~SuperMutant();
 	void takeDamage(int);
 };

@@ -7,6 +7,6 @@ public:
 	PowerFist();
 	PowerFist(PowerFist const &);
 	PowerFist & operator=(PowerFist const &);
-	~PowerFist();
+	virtual ~PowerFist();
 	void attack() const;
 };

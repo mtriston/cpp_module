@@ -22,13 +22,14 @@ int main()
 	std::cout << "-----Additional tests-----" << std::endl;
 	{
 		Squad *temp = new Squad;
-		Squad *squad = new Squad(*temp);
 
 		ISpaceMarine* marine = new TacticalMarine;
 
-		squad->push(0);
-		squad->push(marine);
-		squad->push(marine);
+		temp->push(0);
+		temp->push(marine);
+		temp->push(marine);
+
+		Squad *squad = new Squad(*temp);
 
 		std::cout << "Count after push 0 and two same pointers: " << squad->getCount() << std::endl;
 
@@ -39,7 +40,6 @@ int main()
 			cur->rangedAttack();
 			cur->meleeAttack();
 		}
-		*temp = *squad;
 
 		for (int i = 0; i < temp->getCount(); ++i)
 		{
@@ -48,7 +48,6 @@ int main()
 			cur->rangedAttack();
 			cur->meleeAttack();
 		}
-		temp = temp;
 
 		delete temp;
 		delete squad;
