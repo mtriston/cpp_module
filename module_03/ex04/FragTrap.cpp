@@ -1,54 +1,28 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap() : ClapTrap()
+FragTrap::FragTrap() :  ClapTrap(100, 100, 100, 100, 1, 30, 20, 5, "FragTrap")
 {
-    this->_hitPoints = 100;
-    this->_maxHP = 100;
-    this->_energyPoints = 100;
-    this->_maxEP = 100;
-    this->_level = 1;
-    this->_meleeAttackDmg = 30;
-    this->_rangedAttackDmg = 20;
-    this->_armorReduction = 5;
-    this->_name = "FragTrap";
-    _vaulthunter[0] = &FragTrap::_funzerker;
-    _vaulthunter[1] = &FragTrap::_blightbot;
-    _vaulthunter[2] = &FragTrap::_mechromagician;
-    _vaulthunter[3] = &FragTrap::_miniontrap;
-    _vaulthunter[4] = &FragTrap::_medbot;
+    this->_vaulthunter[0] = &FragTrap::_funzerker;
+    this->_vaulthunter[1] = &FragTrap::_blightbot;
+    this->_vaulthunter[2] = &FragTrap::_mechromagician;
+    this->_vaulthunter[3] = &FragTrap::_miniontrap;
+    this->_vaulthunter[4] = &FragTrap::_medbot;
     std::cout << "\033[1;33mFragTrap Default constructor\033[0m" << std::endl;
 }
 
-FragTrap::FragTrap(std::string const &name) : ClapTrap(name)
+FragTrap::FragTrap(std::string const &name) : ClapTrap(100, 100, 100, 100, 1, 30, 20, 5, name)
 {
-    this->_hitPoints = 100;
-    this->_maxHP = 100;
-    this->_energyPoints = 100;
-    this->_maxEP = 100;
-    this->_level = 1;
-    this->_meleeAttackDmg = 30;
-    this->_rangedAttackDmg = 20;
-    this->_armorReduction = 5;
-    this->_name = name;
-    _vaulthunter[0] = &FragTrap::_funzerker;
-    _vaulthunter[1] = &FragTrap::_blightbot;
-    _vaulthunter[2] = &FragTrap::_mechromagician;
-    _vaulthunter[3] = &FragTrap::_miniontrap;
-    _vaulthunter[4] = &FragTrap::_medbot;
+    this->_vaulthunter[0] = &FragTrap::_funzerker;
+    this->_vaulthunter[1] = &FragTrap::_blightbot;
+    this->_vaulthunter[2] = &FragTrap::_mechromagician;
+    this->_vaulthunter[3] = &FragTrap::_miniontrap;
+    this->_vaulthunter[4] = &FragTrap::_medbot;
     std::cout << "\033[1;33mFragTrap Parametric constructor\033[0m" << std::endl;
 }
 
 FragTrap &FragTrap::operator=(FragTrap const &a)
 {
-    this->_hitPoints = a._hitPoints;
-    this->_maxHP = a._maxHP;
-    this->_energyPoints = a._energyPoints;
-    this->_maxEP = a._maxEP;
-    this->_level = a._level;
-    this->_meleeAttackDmg = a._meleeAttackDmg;
-    this->_rangedAttackDmg = a._rangedAttackDmg;
-    this->_armorReduction = a._armorReduction;
-    this->_name = a._name;
+    ClapTrap::operator=(a);
     std::cout <<  "\033[1;33mFragTrap Assignation operator\033[0m" << std::endl;
     return (*this);
 }
@@ -56,17 +30,31 @@ FragTrap &FragTrap::operator=(FragTrap const &a)
 FragTrap::FragTrap(FragTrap const &a)
 {
     *this = a;
-    _vaulthunter[0] = &FragTrap::_funzerker;
-    _vaulthunter[1] = &FragTrap::_blightbot;
-    _vaulthunter[2] = &FragTrap::_mechromagician;
-    _vaulthunter[3] = &FragTrap::_miniontrap;
-    _vaulthunter[4] = &FragTrap::_medbot;
+    this->_vaulthunter[0] = &FragTrap::_funzerker;
+    this->_vaulthunter[1] = &FragTrap::_blightbot;
+    this->_vaulthunter[2] = &FragTrap::_mechromagician;
+    this->_vaulthunter[3] = &FragTrap::_miniontrap;
+    this->_vaulthunter[4] = &FragTrap::_medbot;
     std::cout <<  "\033[1;33mFragTrap Copy constructor\033[0m" << std::endl;
 }
 
 FragTrap::~FragTrap()
 {
     std::cout << "\033[1;31mFragTrap Destructor\033[0m" << std::endl;
+}
+
+void    FragTrap::rangedAttack(std::string const &target)
+{
+	std::cout << "FragTrap attacks: ";
+    std::cout << "\033[1;31m" << _name << " attacks " << target << " at range, causing ";
+    std::cout << _rangedAttackDmg << " points of damage!\033[0m" << std::endl;
+}
+
+void    FragTrap::meleeAttack(std::string const &target)
+{
+	std::cout << "FragTrap attacks: ";
+    std::cout << "\033[1;31m" << _name << " attacks " << target << " at melee, causing ";
+    std::cout << _meleeAttackDmg << " points of damage!\033[0m" << std::endl;
 }
 
 void	FragTrap::_funzerker()

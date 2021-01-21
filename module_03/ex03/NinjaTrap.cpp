@@ -49,7 +49,7 @@ NinjaTrap::NinjaTrap(NinjaTrap const &a)
 
 NinjaTrap::~NinjaTrap()
 {
-    std::cout << "\033[1;33m" << _name << "is dead\nNinjaTrap destructor was called\033[0m" << std::endl;
+    std::cout << "\033[1;33mNinjaTrap destructor was called\033[0m" << std::endl;
 }
 
 void    NinjaTrap::rangedAttack(std::string const &target)

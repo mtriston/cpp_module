@@ -19,6 +19,18 @@ protected:
 
 public:
 	ClapTrap();
+	ClapTrap
+	(
+		unsigned hitPoints, 
+		unsigned maxHP, 
+		unsigned energyPoints, 
+		unsigned maxEP, 
+		unsigned level, 
+		unsigned meleeDmg, 
+		unsigned rangedDmg, 
+		unsigned armor,
+		std::string const &name
+		);
 	ClapTrap(std::string const &name);
 	ClapTrap(ClapTrap const &);
 	ClapTrap & operator = (ClapTrap const &);
@@ -29,6 +41,15 @@ public:
 	void    takeDamage(unsigned int amount);
 	void    beRepaired(unsigned int amount);
 	std::string getName(void) const;
+	unsigned	getHitPoints(void) const;
+	unsigned	getMaxHP(void) const;
+	unsigned	getEnergyPoints(void) const;
+	unsigned	getMaxEP(void) const;
+	unsigned	getLevel(void) const;
+	unsigned	getMeleeAttackDmg(void) const;
+	unsigned	getRangedAttackDmg(void) const;
+	unsigned	getArmorReduction(void) const;
+
 };
 
 #endif

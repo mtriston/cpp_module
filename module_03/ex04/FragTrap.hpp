@@ -7,7 +7,7 @@
 
 class FragTrap : virtual public ClapTrap
 {
-private:
+protected:
 	void		(FragTrap::*_vaulthunter[5])();
 	void		_funzerker();
 	void		_blightbot();
@@ -23,6 +23,8 @@ public:
 	virtual ~FragTrap();
 
 	void    vaulthunter_dot_exe(std::string const &target);
+	void    rangedAttack(std::string const &target);
+	void    meleeAttack(std::string const &target);
 };
 
 #endif

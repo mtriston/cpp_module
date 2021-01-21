@@ -1,4 +1,5 @@
 #include "FragTrap.hpp"
+#include <ctime>
 
 FragTrap::FragTrap()
 {
@@ -150,6 +151,7 @@ void    FragTrap::vaulthunter_dot_exe(std::string const &target)
 
         std::cout << _name << " attacks " << target << " using vaulthunter_dot_exe!" << std::endl;
 
+		std::srand(time(0));
         (this->*_vaulthunter[std::rand() % 5])();
 
         std::cout << "\033[0m";

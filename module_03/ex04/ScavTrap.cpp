@@ -2,33 +2,39 @@
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
-    _energyPoints = 50;
-    _maxEP = 50;
-    _meleeAttackDmg = 20;
-    _rangedAttackDmg = 15;
-    _armorReduction = 3;
-    _name = "ScavTrap";
-    _challenges[0] = &ScavTrap::_riddle1;
-    _challenges[1] = &ScavTrap::_riddle2;
-    _challenges[2] = &ScavTrap::_riddle3;
-    _challenges[3] = &ScavTrap::_riddle4;
-    _challenges[4] = &ScavTrap::_riddle5;
+    this->_hitPoints = 100;
+    this->_maxHP = 100;
+    this->_energyPoints = 50;
+    this->_maxEP = 50;
+    this->_level = 1;
+    this->_meleeAttackDmg = 20;
+    this->_rangedAttackDmg = 15;
+    this->_armorReduction = 3;
+    this->_name = "ScavTrap";
+    this->_challenges[0] = &ScavTrap::_riddle1;
+    this->_challenges[1] = &ScavTrap::_riddle2;
+    this->_challenges[2] = &ScavTrap::_riddle3;
+    this->_challenges[3] = &ScavTrap::_riddle4;
+    this->_challenges[4] = &ScavTrap::_riddle5;
     std::cout << "\033[1;33m" << _name << ": Look out everybody! Things are about to get awesome! (ScavTrap Default constructor)\033[0m" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string const &name) : ClapTrap(name)
 {
-    _energyPoints = 50;
-    _maxEP = 50;
-    _meleeAttackDmg = 20;
-    _rangedAttackDmg = 15;
-    _armorReduction = 3;
-    _name = name;
-    _challenges[0] = &ScavTrap::_riddle1;
-    _challenges[1] = &ScavTrap::_riddle2;
-    _challenges[2] = &ScavTrap::_riddle3;
-    _challenges[3] = &ScavTrap::_riddle4;
-    _challenges[4] = &ScavTrap::_riddle5;
+    this->_hitPoints = 100;
+    this->_maxHP = 100;
+    this->_energyPoints = 50;
+    this->_maxEP = 50;
+    this->_level = 1;
+    this->_meleeAttackDmg = 20;
+    this->_rangedAttackDmg = 15;
+    this->_armorReduction = 3;
+    this->_name = name;
+    this->_challenges[0] = &ScavTrap::_riddle1;
+    this->_challenges[1] = &ScavTrap::_riddle2;
+    this->_challenges[2] = &ScavTrap::_riddle3;
+    this->_challenges[3] = &ScavTrap::_riddle4;
+    this->_challenges[4] = &ScavTrap::_riddle5;
     std::cout << "\033[1;33m" << _name << " : Glitching weirdness is a term of endearment, right? (ScavTrap Parametric constructor)\033[0m" << std::endl;
 }
 
@@ -61,6 +67,20 @@ ScavTrap::ScavTrap(ScavTrap const &a)
 ScavTrap::~ScavTrap()
 {
     std::cout << "\033[1;31m" << _name << ": No fair! I wasn't ready. (ScavTrap Destructor)\033[0m" << std::endl;
+}
+
+void    ScavTrap::rangedAttack(std::string const &target)
+{
+	std::cout << "ScavTrap attacks: ";
+    std::cout << "\033[1;31m" << _name << " attacks " << target << " at range, causing ";
+    std::cout << _rangedAttackDmg << " points of damage!\033[0m" << std::endl;
+}
+
+void    ScavTrap::meleeAttack(std::string const &target)
+{
+	std::cout << "ScavTrap attacks: ";
+    std::cout << "\033[1;31m" << _name << " attacks " << target << " at melee, causing ";
+    std::cout << _meleeAttackDmg << " points of damage!\033[0m" << std::endl;
 }
 
 void	ScavTrap::_riddle1()

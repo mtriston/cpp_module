@@ -13,6 +13,19 @@ ClapTrap::ClapTrap()
     this->_name = "ClapTrap";
     std::cout << "\033[1;33m(ClapTrap Default constructor)\033[0m" << std::endl;
 }
+ClapTrap::ClapTrap
+(
+    unsigned hitPoints, unsigned maxHP, 
+    unsigned energyPoints, unsigned maxEP, 
+    unsigned level, unsigned meleeDmg, 
+    unsigned rangedDmg, unsigned armor,
+   std::string const &name
+) : _hitPoints(hitPoints),  _maxHP(maxHP),  _energyPoints(energyPoints), 
+    _maxEP(maxEP), _level(level), _meleeAttackDmg(meleeDmg), 
+    _rangedAttackDmg(rangedDmg), _armorReduction(armor),_name(name)
+    {
+        std::cout << "\033[1;33mClapTrap Parametric constructor\033[0m" << std::endl;
+    }
 
 ClapTrap::ClapTrap(std::string const &name)
 {
@@ -101,3 +114,12 @@ std::string ClapTrap::getName(void) const
 {
     return (_name);
 }
+
+unsigned	ClapTrap::getHitPoints(void) const { return (_hitPoints); }
+unsigned	ClapTrap::getMaxHP(void) const { return (_maxHP); }
+unsigned	ClapTrap::getEnergyPoints(void) const { return (_energyPoints); }
+unsigned	ClapTrap::getMaxEP(void) const { return (_maxEP); }
+unsigned	ClapTrap::getLevel(void) const { return (_level); }
+unsigned	ClapTrap::getMeleeAttackDmg(void) const { return (_meleeAttackDmg); }
+unsigned	ClapTrap::getRangedAttackDmg(void) const { return (_rangedAttackDmg); }
+unsigned	ClapTrap::getArmorReduction(void) const { return (_armorReduction); }

@@ -44,5 +44,10 @@ int main()
         c.challengeNewcomer("Baby");
         c.challengeNewcomer("Apple");
     }
+
+    std::cout << "---------ClapTrap----------" << std::endl;
+    {
+        
+    }
     return 0;
 }

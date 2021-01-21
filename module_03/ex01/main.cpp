@@ -3,7 +3,7 @@
 
 int main()
 {
-    std::cout << "---------ScavTrap----------" << std::endl;
+    std::cout << "---------FragTrap----------" << std::endl;
     {
         FragTrap a;
         FragTrap b("b");

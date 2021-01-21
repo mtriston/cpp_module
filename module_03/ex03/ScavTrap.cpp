@@ -63,14 +63,14 @@ ScavTrap::~ScavTrap()
     std::cout << "\033[1;31m" << _name << ": No fair! I wasn't ready. (ScavTrap Destructor)\033[0m" << std::endl;
 }
 
-void    FragTrap::rangedAttack(std::string const &target)
+void    ScavTrap::rangedAttack(std::string const &target)
 {
 	std::cout << "ScavTrap attacks: ";
     std::cout << "\033[1;31m" << _name << " attacks " << target << " at range, causing ";
     std::cout << _rangedAttackDmg << " points of damage!\033[0m" << std::endl;
 }
 
-void    FragTrap::meleeAttack(std::string const &target)
+void    ScavTrap::meleeAttack(std::string const &target)
 {
 	std::cout << "ScavTrap attacks: ";
     std::cout << "\033[1;31m" << _name << " attacks " << target << " at melee, causing ";

@@ -68,12 +68,22 @@ int main()
     std::cout << "---------SuperTrap----------" << std::endl;
 	{
 		SuperTrap super;
+        // SuperTrap temp;
+
+        // super = SuperTrap(temp);
 		FragTrap frag;
 
 		super.meleeAttack("Enemy");
 		super.rangedAttack("Horse");
+        super.takeDamage(30);
+        super.beRepaired(30);
 		super.ninjaShoebox(frag);
         super.vaulthunter_dot_exe("Apple");
+        super.vaulthunter_dot_exe("Pear");
+        super.vaulthunter_dot_exe("Wood");
+        super.vaulthunter_dot_exe("Cat");
+        super.vaulthunter_dot_exe("Dog");
+
 	}
     return 0;
 }

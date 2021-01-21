@@ -3,14 +3,16 @@
 # include "NinjaTrap.hpp"
 # include "FragTrap.hpp"
 
-class SuperTrap : public NinjaTrap, public FragTrap
+class SuperTrap : public FragTrap, public NinjaTrap
 {
 public:
 	SuperTrap();
 	SuperTrap(std::string const & name);
 	SuperTrap(SuperTrap const &);
 	SuperTrap &operator=(SuperTrap const &);
-	~SuperTrap();	
+	~SuperTrap();
+	void rangedAttack(std::string const &target);
+	void meleeAttack(std::string const &target);
 };
 #endif
 

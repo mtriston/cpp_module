@@ -1,42 +1,18 @@
 #include "NinjaTrap.hpp"
 
-NinjaTrap::NinjaTrap() : ClapTrap()
+NinjaTrap::NinjaTrap() : ClapTrap(60, 60, 120, 120, 1, 60, 5, 0, "NinjaTrap")
 {
-    _hitPoints = 60;
-    _maxHP = 60;
-    _energyPoints = 120;
-    _maxEP = 120;
-    _meleeAttackDmg = 60;
-    _rangedAttackDmg = 5;
-    _armorReduction = 0;
-    _name = "NinjaTrap";
     std::cout << "\033[1;33mNinjaTrap default constructor was called\033[0m" << std::endl;
 }
 
-NinjaTrap::NinjaTrap(std::string const &name) : ClapTrap(name)
+NinjaTrap::NinjaTrap(std::string const &name) :  ClapTrap(60, 60, 120, 120, 1, 60, 5, 0, name)
 {
-    _hitPoints = 60;
-    _maxHP = 60;
-    _energyPoints = 120;
-    _maxEP = 120;
-    _meleeAttackDmg = 60;
-    _rangedAttackDmg = 5;
-    _armorReduction = 0;
-    _name = name;
     std::cout << "\033[1;33mNinjaTrap parametric constructor was called\033[0m" << std::endl;
 }
 
 NinjaTrap &NinjaTrap::operator=(NinjaTrap const &a)
 {
-    _hitPoints = a._hitPoints;
-    _maxHP = a._maxHP;
-    _energyPoints = a._energyPoints;
-    _maxEP = a._maxEP;
-    _level = a._level;
-    _meleeAttackDmg = a._meleeAttackDmg;
-    _rangedAttackDmg = a._rangedAttackDmg;
-    _armorReduction = a._armorReduction;
-    _name = a._name;
+    ClapTrap::operator=(a);
     std::cout << "\033[1;33mNinjaTrap assignation operator was called\033[0m" << std::endl;
     return (*this);
 }
@@ -50,6 +26,20 @@ NinjaTrap::NinjaTrap(NinjaTrap const &a)
 NinjaTrap::~NinjaTrap()
 {
     std::cout << "\033[1;33mNinjaTrap destructor was called\033[0m" << std::endl;
+}
+
+void    NinjaTrap::rangedAttack(std::string const &target)
+{
+	std::cout << "NinjaTrap attacks: ";
+    std::cout << "\033[1;31m" << this->_name << " attacks " << target << " at range, causing ";
+    std::cout << this->_rangedAttackDmg << " points of damage!\033[0m" << std::endl;
+}
+
+void    NinjaTrap::meleeAttack(std::string const &target)
+{
+	std::cout << "NinjaTrap attacks: ";
+    std::cout << "\033[1;31m" << this->_name << " attacks " << target << " at melee, causing ";
+    std::cout << this->_meleeAttackDmg << " points of damage!\033[0m" << std::endl;
 }
 
 void    NinjaTrap::ninjaShoebox(ClapTrap &trap)

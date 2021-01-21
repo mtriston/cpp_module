@@ -11,7 +11,7 @@ ClapTrap::ClapTrap()
     _rangedAttackDmg = 20;
     _armorReduction = 5;
     _name = "ClapTrap";
-    std::cout << "\033[1;33m(ClapTrap Default constructor)\033[0m" << std::endl;
+    std::cout << "\033[1;33mClapTrap Default constructor\033[0m" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string const &name)
@@ -25,7 +25,7 @@ ClapTrap::ClapTrap(std::string const &name)
     _rangedAttackDmg = 20;
     _armorReduction = 5;
     _name = name;
-    std::cout << "\033[1;33m(ClapTrap Parametric constructor)\033[0m" << std::endl;
+    std::cout << "\033[1;33mClapTrap Parametric constructor\033[0m" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &a)
@@ -39,19 +39,19 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &a)
     _rangedAttackDmg = a._rangedAttackDmg;
     _armorReduction = a._armorReduction;
     _name = a._name;
-    std::cout <<  "\033[1;33m(ClapTrap Assignation operator)\033[0m" << std::endl;
+    std::cout <<  "\033[1;33mClapTrap Assignation operator\033[0m" << std::endl;
     return (*this);
 }
 
 ClapTrap::ClapTrap(ClapTrap const &a)
 {
     *this = a;
-    std::cout <<  "\033[1;33m(ClapTrap Copy constructor)\033[0m" << std::endl;
+    std::cout <<  "\033[1;33mClapTrap Copy constructor\033[0m" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << "\033[1;31m(ClapTrap Destructor)\033[0m" << std::endl;
+    std::cout << "\033[1;31mClapTrap Destructor\033[0m" << std::endl;
 }
 
 void    ClapTrap::rangedAttack(std::string const &target)
