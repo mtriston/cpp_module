@@ -7,7 +7,7 @@
 int main()
 {
 	try {
-		Bureaucrat a;
+		Bureaucrat a("a", 150);
 		std::cout << a;
 		std::cout << "Try to decrement 150 grade\n";
 		a.decGrade();

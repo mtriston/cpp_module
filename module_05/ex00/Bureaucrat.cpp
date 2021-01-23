@@ -4,6 +4,8 @@
 
 #include "Bureaucrat.hpp"
 
+Bureaucrat::Bureaucrat() : _name("Noname"), _grade(150)	{}
+
 Bureaucrat::Bureaucrat(std::string const & name, int grade) : _name(name), _grade(grade) {
 	if (grade < MAX_GRADE)
 		throw GradeTooHighException();
