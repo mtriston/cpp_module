@@ -2,32 +2,35 @@
 // Created by mtriston on 23.01.2021.
 //
 
-#ifndef MODULE_05_FORM_HPP
-#define MODULE_05_FORM_HPP
+#ifndef MODULE_05_AFORM_HPP
+#define MODULE_05_AFORM_HPP
 
 #include <string>
-class Form;
+class AForm;
 #include "Bureaucrat.hpp"
 
-class Form {
+class AForm {
 private:
 	const std::string _name;
+	std::string	_target;
 	bool _isSigned;
 	const int _signGrade;
 	const int _execGrade;
 
-	Form();
+	AForm();
 
 public:
-	Form(std::string const &name, int signGrade, int execGrade);
+	AForm(std::string const &name, std::string const &target, int signGrade, int execGrade);
 
-	Form(Form const &);
+	AForm(AForm const &);
 
-	virtual ~Form();
+	~AForm();
 
-	Form &operator=(Form const &);
+	AForm &operator=(AForm const &);
 
 	std::string const &getName() const;
+
+	std::string const &getTarget() const;
 
 	bool getIsSigned() const;
 
@@ -35,7 +38,11 @@ public:
 
 	int getExecGrade() const;
 
-	virtual void beSigned(Bureaucrat &);
+	void beSigned(Bureaucrat const &);
+
+	void execute(Bureaucrat const &) const;
+
+	virtual void action() const = 0;
 
 	class GradeTooHighException : public std::exception {
 	public:
@@ -48,6 +55,6 @@ public:
 	};
 };
 
-std::ostream &operator<<(std::ostream &os, Form const &a);
+std::ostream &operator<<(std::ostream &os, AForm const &a);
 
-#endif //MODULE_05_FORM_HPP
+#endif //MODULE_05_AFORM_HPP
