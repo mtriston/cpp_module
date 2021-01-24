@@ -40,4 +40,16 @@ int main()
 	catch (std::exception & e) {
 		std::cout << e.what() << std::endl;
 	}
+	try {
+		std::cout << "Success increment and decrement\n";
+		Bureaucrat d("d", 100);
+		std::cout << d;
+		d.incGrade();
+		std::cout << d;
+		d.decGrade();
+		std::cout << d;
+	}
+	catch (std::exception & e) {
+		std::cout << e.what() << std::endl;
+	}
 }
