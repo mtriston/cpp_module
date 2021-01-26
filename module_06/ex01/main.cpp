@@ -2,21 +2,7 @@
 // Created by mtriston on 26.01.2021.
 //
 
-#include <string>
-#include <iostream>
-#include <ctime>
-#include <cstdlib>
-
-#define ALPHABET "abcdifghifklmnopqrstuvwxyz"
-#define ALPHABET_LENGHT 26
-#define STR_LEN 8
-
-struct Data
-{
-	std::string s1;
-	int n;
-	std::string s2;
-};
+#include "serialization.hpp"
 
 void* serialize(void)
 {

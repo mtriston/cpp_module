@@ -1,4 +1,4 @@
-NAME = serialization
+NAME = identify
 
 SRC = main.cpp
 
@@ -6,7 +6,7 @@ FLAGS = -Wall -Wextra -Werror
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADER = serialization.hpp
+HEADER = Base.hpp A.hpp B.hpp C.hpp
 
 all: $(NAME)
 
