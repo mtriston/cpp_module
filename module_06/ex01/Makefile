@@ -1,8 +1,8 @@
-NAME = convert
+NAME = serialization
 
 SRC = main.cpp
 
-FLAGS = -Wall -Wextra -Werror
+#FLAGS = -Wall -Wextra -Werror
 
 OBJ = $(SRC:.cpp=.o)
 
