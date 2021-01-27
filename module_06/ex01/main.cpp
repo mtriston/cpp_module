@@ -4,44 +4,66 @@
 
 #include "serialization.hpp"
 
-void* serialize(void) {
-	static const char* abc = ALPHABET;
-	Data *raw;
+static void randomString(std::string &str) {
 
-	raw = new Data();
-	raw->s1.resize(9);
-	raw->s2.resize(9);
-	raw->n = std::rand();
-	for (int i = 0; i < STR_LEN; ++i) {
-		raw->s1[i] = abc[std::rand() % ALPHABET_LENGHT];
-		raw->s2[i] = abc[std::rand() % ALPHABET_LENGHT];
+	for (int i = 0; i < 8; ++i) {
+		if (std::rand() % 2)
+			str[i] = std::rand() % 26 + 'a';
+		else
+			str[i] = std::rand() % 10 + '0';
 	}
-	raw->s1[STR_LEN] = '\0';
-	raw->s2[STR_LEN] = '\0';
+}
 
-	std::cout << "___Serialize___" << std::endl;
-	std::cout << "s1: " << raw->s1 << std::endl;
-	std::cout << "n: " << raw->n << std::endl;
-	std::cout << "s2: " << raw->s2 << std::endl;
-	/* 72 bytes on Linux because sizeof(std::string) = 32 bytes */
-	std::cout << "size of raw: " << sizeof(*raw) << std::endl;
+static void *serialize(void) {
+
+	int size = sizeof(std::string) * 2 + sizeof(int);
+	char *raw = new char[size];
+	int n = std::rand();
+	std::string str(8, 0);
+
+	randomString(str);
+	std::cout << "s1: " << str << std::endl;
+	*reinterpret_cast<std::string*>(raw) = str;
+
+	std::cout << "n: " << n << std::endl;
+	*reinterpret_cast<int*>(raw + sizeof(std::string)) = n;
+
+	randomString(str);
+	std::cout << "s2: " << str << std::endl;
+	*reinterpret_cast<std::string*>(raw + sizeof(std::string) + sizeof(int)) = str;
+
+	std::cout << "size of raw: " << size << std::endl;
 	return (raw);
 }
 
-Data* deserialize(void* raw) { return (reinterpret_cast<Data*>(raw)); }
+static Data *deserialize(void* raw) {
 
+	Data *data;
+	char *tmp;
 
-int main()
-{
+	tmp = static_cast<char *>(raw);
+	data = new Data();
+	data->s1 = *reinterpret_cast<std::string*>(tmp);
+	data->n = *reinterpret_cast<int *>(tmp + sizeof(std::string));
+	data->s2 = *reinterpret_cast<std::string*>(tmp + sizeof(std::string) + sizeof(int));
+	return (data);
+}
+
+int main() {
+
+	void *raw;
+	Data *data;
+
 	std::srand(time(0));
-
-	void* raw = serialize();
-	Data* data = deserialize(raw);
+	std::cout << "___Serialize___" << std::endl;
+	raw = serialize();
 	std::cout << "___Deserialize___" << std::endl;
+	data = deserialize(raw);
 	std::cout << "s1: " << data->s1 << std::endl;
 	std::cout << "n: " << data->n << std::endl;
 	std::cout << "s2: " << data->s2 << std::endl;
 
+	delete [] static_cast<char*>(raw);
 	delete data;
 	return (0);
 }
