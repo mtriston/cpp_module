@@ -4,47 +4,32 @@
 
 #include "serialization.hpp"
 
-void* serialize(void)
-{
+void* serialize(void) {
 	static const char* abc = ALPHABET;
+	Data *raw;
 
-	char* data;
-	char* str;
-	int* num;
+	raw = new Data();
+	raw->s1.resize(9);
+	raw->s2.resize(9);
+	raw->n = std::rand();
+	for (int i = 0; i < STR_LEN; ++i) {
+		raw->s1[i] = abc[std::rand() % ALPHABET_LENGHT];
+		raw->s2[i] = abc[std::rand() % ALPHABET_LENGHT];
+	}
+	raw->s1[STR_LEN] = '\0';
+	raw->s2[STR_LEN] = '\0';
 
 	std::cout << "___Serialize___" << std::endl;
-
-	data = new char[sizeof(char) * STR_LEN * 2 + sizeof(int)];
-	str = data;
-
-	for (int i = 0; i < STR_LEN - 1; ++i)
-		str[i] = abc[std::rand() % ALPHABET_LENGHT];
-	str[STR_LEN] = 0;
-	std::cout << "s1: " << str << std::endl;
-	str+= STR_LEN;
-
-	num = reinterpret_cast<int*>(str);
-	*num = std::rand() % 1000;
-	std::cout << "num: " << *num << std::endl;
-	++num;
-
-	str = reinterpret_cast<char *>(num);
-	for (int i = 0; i < STR_LEN - 1; ++i)
-		str[i] = abc[std::rand() % ALPHABET_LENGHT];
-	str[STR_LEN] = 0;
-	std::cout << "s1: " << str << std::endl;
-
-	return (reinterpret_cast<void*>(data));
+	std::cout << "s1: " << raw->s1 << std::endl;
+	std::cout << "n: " << raw->n << std::endl;
+	std::cout << "s2: " << raw->s2 << std::endl;
+	/* 72 bytes on Linux because sizeof(std::string) = 32 bytes */
+	std::cout << "size of raw: " << sizeof(*raw) << std::endl;
+	return (raw);
 }
 
-Data* deserialize(void* raw)
-{
-	Data *data = new Data();
-	data->s1 = std::string(reinterpret_cast<char*>(raw), STR_LEN);
-	data->n = *reinterpret_cast<int*>(reinterpret_cast<char*>(raw) + STR_LEN);
-	data->s2 = std::string((reinterpret_cast<char*>(raw)) + STR_LEN + sizeof(int), STR_LEN);
-	return (data);
-}
+Data* deserialize(void* raw) { return (reinterpret_cast<Data*>(raw)); }
+
 
 int main()
 {
@@ -57,8 +42,6 @@ int main()
 	std::cout << "n: " << data->n << std::endl;
 	std::cout << "s2: " << data->s2 << std::endl;
 
-
-
-	delete [] reinterpret_cast<char*>(raw);
+	delete data;
 	return (0);
 }
